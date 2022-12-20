@@ -100,7 +100,7 @@
         });
     }
     function cachange(i){
-        $.get("/loadica", function (res) {
+        $.get("/loadca", function (res) {
             for (let Obj of res) {
                if(Obj.index==i){
                 play(Obj.value);
@@ -118,7 +118,7 @@
         });
     }
     function dschange(i){
-        $.get("/loadids", function (res) {
+        $.get("/loadds", function (res) {
             for (let Obj of res) {
                if(Obj.index==i){
                 play(Obj.value);
