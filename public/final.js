@@ -4,7 +4,7 @@
         $.get("/loadcaculus", function (res) {
             let content = "";
             for (let Obj of res) {
-                content +=`<div style="color:blue" onclick="caculuschange(${Obj.index})" >${Obj.list}</div>`;
+                content +=`<div class="hover" style="color:blue" onclick="caculuschange(${Obj.index})" >${Obj.list}</div>`;
             }
             $("#display").html(content);
         });
@@ -22,7 +22,7 @@
         $.get("/loadprobability", function (res) {
             let content = "";
             for (let Obj of res) {
-                content +=`<div style="color:blue" onclick="probabilitychange(${Obj.index})" >${Obj.list}</div>`;
+                content +=`<div class="hover" style="color:blue"onclick="probabilitychange(${Obj.index})" >${Obj.list}</div>`;
             }
             $("#display").html(content);
         });
@@ -40,7 +40,7 @@
         $.get("/loadlinear", function (res) {
             let content = "";
             for (let Obj of res) {
-                content +=`<div style="color:blue" onclick="linearchange(${Obj.index})" >${Obj.list}</div>`;
+                content +=`<div class="hover" style="color:blue" onclick="linearchange(${Obj.index})" >${Obj.list}</div>`;
             }
             $("#display").html(content);
         });
@@ -58,7 +58,7 @@
         $.get("/loaddiscrete", function (res) {
             let content = "";
             for (let Obj of res) {
-                content +=`<div style="color:blue" onclick="discretechange(${Obj.index})" >${Obj.list}</div>`;
+                content +=`<div class="hover" style="color:blue" onclick="discretechange(${Obj.index})" >${Obj.list}</div>`;
             }
             $("#display").html(content);
         });
@@ -76,7 +76,7 @@
         $.get("/loaditc", function (res) {
             let content = "";
             for (let Obj of res) {
-                content +=`<div style="color:blue" onclick="itcchange(${Obj.index})" >${Obj.list}</div>`;
+                content +=`<div class="hover" style="color:blue" onclick="itcchange(${Obj.index})" >${Obj.list}</div>`;
             }
             $("#display").html(content);
         });
