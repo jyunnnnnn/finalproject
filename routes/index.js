@@ -3,7 +3,6 @@ var router = express.Router();
 const MongoClient =require('mongodb').MongoClient; 
 const url= "mongodb+srv://admin:a12891289@cluster0.cd0rcje.mongodb.net/?retryWrites=true&w=majority";
 router.get("/loadcaculus",function(req,res){
-    chatrecord.length = 0;
     MongoClient.connect(url,function(err,db){
       if(err)throw err;
       console.log("連線成功load");
@@ -17,7 +16,6 @@ router.get("/loadcaculus",function(req,res){
     });
 });
 router.get("/loadprobability",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
@@ -31,7 +29,6 @@ router.get("/loadprobability",function(req,res){
   });
 });
 router.get("/loaditc",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
@@ -45,7 +42,6 @@ router.get("/loaditc",function(req,res){
   });
 });
 router.get("/loadlinear",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
@@ -59,7 +55,6 @@ router.get("/loadlinear",function(req,res){
   });
 });
 router.get("/loaddiscrete",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
@@ -73,7 +68,6 @@ router.get("/loaddiscrete",function(req,res){
   });
 });
 router.get("/loadca",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
@@ -87,7 +81,6 @@ router.get("/loadca",function(req,res){
   });
 });
 router.get("/loadds",function(req,res){
-  chatrecord.length = 0;
   MongoClient.connect(url,function(err,db){
     if(err)throw err;
     console.log("連線成功load");
