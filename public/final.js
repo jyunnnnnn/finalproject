@@ -99,7 +99,7 @@
             $("#display").html(content);
         });
     }
-    function cachange(){
+    function cachange(i){
         $.get("/loadica", function (res) {
             for (let Obj of res) {
                if(Obj.index==i){
@@ -117,7 +117,7 @@
             $("#display").html(content);
         });
     }
-    function dschange(){
+    function dschange(i){
         $.get("/loadids", function (res) {
             for (let Obj of res) {
                if(Obj.index==i){
