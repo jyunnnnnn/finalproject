@@ -90,6 +90,42 @@
             }
         });
     }
+    function showca(){
+        $.get("/loadca", function (res) {
+            let content = "";
+            for (let Obj of res) {
+                content +=`<div class="hover" style="color:blue" onclick="cachange(${Obj.index})" >${Obj.list}</div>`;
+            }
+            $("#display").html(content);
+        });
+    }
+    function cachange(){
+        $.get("/loadica", function (res) {
+            for (let Obj of res) {
+               if(Obj.index==i){
+                play(Obj.value);
+               }
+            }
+        });
+    }
+    function showds(){
+        $.get("/loadds", function (res) {
+            let content = "";
+            for (let Obj of res) {
+                content +=`<div class="hover" style="color:blue" onclick="dschange(${Obj.index})" >${Obj.list}</div>`;
+            }
+            $("#display").html(content);
+        });
+    }
+    function dschange(){
+        $.get("/loadids", function (res) {
+            for (let Obj of res) {
+               if(Obj.index==i){
+                play(Obj.value);
+               }
+            }
+        });
+    }
     function showhomepage(){
         var randomarr=["b0cybhfNXl4","u0rgcWyuQbY","3IlQNqvzc2M"]
         which=randomarr[Math.floor(Math.random()*3)];
