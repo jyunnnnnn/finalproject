@@ -1,10 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const app=express();
 const MongoClient =require('mongodb').MongoClient; 
 const url= "mongodb+srv://admin:a12891289@cluster0.cd0rcje.mongodb.net/?retryWrites=true&w=majority";
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 router.post('/login',function(req,res){
   const {username,password}=req.body;
     console.log("username=",username,"password=",password);
