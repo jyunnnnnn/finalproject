@@ -52,8 +52,8 @@ nav:hover ul    { display: block; }*/
     width: 70%;
 }
 .intro_pic:hover{
-    width: 90%;
-    transition:0.7s;
+    width: 85%;
+    transition:0.5s;
 }
 #flex-container {
     display: flex;
