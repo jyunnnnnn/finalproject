@@ -53,7 +53,8 @@ router.post("/signUp", function (req, res) {
         console.log("連線成功load");
         const dbo =db.db("mydb");
         dbo.collection("account").findOne({username:q.username},function(err,a){
-          if(err){
+          console.log(a);
+          if(!a){
             dbo.collection("account").insertOne({username:q.username,password:q.password},function (err, result) {
               if (err) throw err;
               res.send("ok");
@@ -61,7 +62,9 @@ router.post("/signUp", function (req, res) {
               db.close();
             });
           }
-          res.send("fail");
+          else{
+            res.send("fail");
+          }
         })
     });
 });
