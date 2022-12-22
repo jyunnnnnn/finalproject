@@ -14,7 +14,8 @@
                     $.post("/signIn",{username: $("#username").val(),password: $("#password").val(),},function (res) {
                             if (res == "ok") {
                                 alert("Sign in success");
-                                location.href=("/main.html");
+                                
+                                location.href=("main.html");
                             }
                             else alert("Sign in fail");
                     });
@@ -38,7 +39,9 @@
 
 <body>
     <label>帳號: <input type=" text" id="username" size="10"></input></label>
-    <label>密碼: <input type="text" id="password" size="40"></label>
+    <br>
+    <label>密碼: <input type="text" id="password" size="10"></label>
+    <br>
     </input><input type="button" id="signin" value="登入">
     <input type="button" id="signup" value="註冊">
 </body>
