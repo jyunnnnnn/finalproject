@@ -50,7 +50,8 @@ $(document).ready(function(){
         $("#starttime").prop('disabled',false);
         $("#stoptime").prop('disabled',true);
     });
-    $("#logout").click(function(){
+    $("#login").text(account+"(登出)");
+    $("#login").click(function(){
         alert("登出成功 請按下確認回到登入頁面")
         location.href=("index.html");
     });
@@ -121,7 +122,6 @@ $(document).ready(function(){
                     $("#display").html(content);
                 });
     });
-    $("#login").text(account);
     $("#123").text("");
 });
 /*影片播放*/{
