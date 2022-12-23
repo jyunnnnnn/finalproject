@@ -1,3 +1,14 @@
+const account=decodeURIComponent((location.search).substring(1));
+$(document).ready(function(){
+    $("#logout").click(function(){
+        alert("登出成功 請按下確認回到登入頁面")
+        location.href=("index.html");
+    });
+    showhomepage();
+    $("#login").text(account);
+    
+    $("#123").text("");
+});
 function aboutus(){
     us="";
     $("#display").html(us);
@@ -159,75 +170,32 @@ function play(which){
 
 /*計時*/{
     var count=null;
-    var seconds=0;
+    let seconds;
     function timerun(){
-        if(count==null){
-            if(parseInt(localStorage.getItem("time"))){
-                seconds=localStorage.getItem("time");
-                count=setInterval(update,1000);
-                
-            }
-            else{
-                localStorage.setItem("time",seconds);
-                count=setInterval(update,1000);
-            }
-        }
+        $.get("/time",{username:account},function(res){
+            seconds=res.toString();
+            console.log("取得:"+seconds+"型態:"+typeof seconds)
+        });
+        count=setInterval(update,1000);
     }
+    
     function update(){
+        seconds=Number(seconds);
         seconds++;
-        localStorage.setItem("time",seconds);
-        foo=document.getElementById("123");
-        numtime=parseInt(localStorage.getItem("time"))
-        foo.innerHTML="目前累積使用網站"+Math.floor(numtime/3600)+"小時"+Math.floor(numtime/60)%60+"分鐘"+numtime%60+"秒";
-        switch(Math.floor(numtime/3600)){
-            case 0:
-                $("#level").attr("src","sushi/11.png");
-                $("#levelmsg").text("等級1")
-                break;
-            case 1:
-                $("#level").attr("src","sushi/10.png");
-                $("#levelmsg").text("等級2")
-                break;
-            case 2:
-                $("#level").attr("src","sushi/09.png");
-                $("#levelmsg").text("等級3")
-                break;
-            case 3:
-                $("#level").attr("src","sushi/08.png");
-                $("#levelmsg").text("等級4")
-                break;
-            case 4:
-                $("#level").attr("src","sushi/07.png");
-                $("#levelmsg").text("等級5")
-                break;
-            case 5:
-                $("#level").attr("src","sushi/06.png");
-                $("#levelmsg").text("等級6")
-                break;
-            case 6:
-                $("#level").attr("src","sushi/05.png");
-                $("#levelmsg").text("等級7")
-                break;
-            case 7:
-                $("#level").attr("src","sushi/04.png");
-                $("#levelmsg").text("等級8")
-                break;
-            case 8:
-                $("#level").attr("src","sushi/03.png");
-                $("#levelmsg").text("等級9")
-                break;
-            case 9:
-                $("#level").attr("src","sushi/02.png");
-                $("#levelmsg").text("等級10")
-                break;
-            case 10:
-                $("#level").attr("src","sushi/01.png");
-                $("#levelmsg").text("等級11")
-                break;
-            default:
-                $("#level").attr("src","sushi/00.png");
-                $("#levelmsg").text("等級12")
-                break;                    
+        console.log("取得:"+seconds+"型態:"+typeof seconds)
+        seconds=seconds.toString();
+        console.log("取得:"+seconds+"型態:"+typeof seconds)
+        $.post("/newtime",{username:account,timerecord:seconds},function(res){
+            console.log("轉換:"+res);
+        });
+        $("#123").text("目前累積使用網站"+Math.floor(seconds/3600)+"小時"+Math.floor(seconds/60)%60+"分鐘"+seconds%60+"秒");
+        if(Math.floor(seconds/3600)<=10){
+            $("#level").attr("src","sushi/"+(11-Math.floor(seconds/3600))+".png");
+            $("#levelmsg").text("等級"+(Math.floor(seconds/3600)+1));
+        }
+        else{
+            $("#level").attr("src","sushi/00.png");
+            $("#levelmsg").text("等級12")
         }
     }
     function stoptimerun(){
@@ -236,11 +204,6 @@ function play(which){
     }
     
 }
-function start(){
-    showhomepage();
-    foo=document.getElementById("123");
-    foo.innerHTML="目前累積使用網站"+Math.floor(parseInt(localStorage.getItem("time"))/3600)+"小時"+Math.floor(parseInt(localStorage.getItem("time"))/60)%60+"分鐘"+parseInt(localStorage.getItem("time"))%60+"秒";
-} 
 
-window.addEventListener("load",start,false);
+
 
