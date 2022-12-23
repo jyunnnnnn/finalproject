@@ -1,3 +1,4 @@
+const { application } = require('express');
 var express = require('express');
 var router = express.Router();
 const MongoClient =require('mongodb').MongoClient; 
@@ -25,22 +26,54 @@ const url= "mongodb+srv://admin:a12891289@cluster0.cd0rcje.mongodb.net/?retryWri
     console.log("username=",username,"password=",password);
     res.redirect("http://localhost:3000/main.html");
 });*/
+
+router.get("/time",function(req,res){
+  const q=req.query;
+  MongoClient.connect(url,function(err,db){
+      if(err) throw err;  
+      const dbo =db.db("mydb");
+      dbo.collection("account").findOne({username:q.username},function (err, a) {
+        if (err) throw err;
+          console.log(a.timerecord);
+          res.send(a.timerecord);
+      });
+  });
+});
+router.post("/newtime",function(req,res){
+    const q=req.body;
+    MongoClient.connect(url,function(err,db){
+        if(err) throw err;
+        const dbo =db.db("mydb");
+        dbo.collection("account").updateOne({username:q.username},{$set:{timerecord:q.timerecord}},function(err,a){
+          if(err) throw err;
+          //console.log(a.timerecord);
+          res.send(a.timerecord);
+      })
+  });
+});
 router.post("/signIn", function (req, res) {
   //console.log(req.body);
-  console.log("Sign in now...");
+  console.log("登入中...");
   const q = req.body;
   MongoClient.connect(url,function(err,db){
-    if(err)throw err;
+    if(err) {
+      res.send("fail");
+      console.log("登入失敗");
+      throw err;
+    }  
     console.log("連線成功load");
     const dbo =db.db("mydb");
     dbo.collection("account").findOne({username:q.username},function (err, a) {
       if (err) throw err;
-      if(a.password==q.password){
-        res.send("ok");
+      if(a==null) res.send("fail");
+      else if(a.password==q.password){
+        res.send(q.username);
       }
-      console.log("登入失敗");
-      res.send("fail");
-      db.close();
+      else{
+        console.log("登入失敗");
+        res.send("fail");
+        db.close();
+      }
     });
   });
 });
@@ -55,7 +88,7 @@ router.post("/signUp", function (req, res) {
         dbo.collection("account").findOne({username:q.username},function(err,a){
           console.log(a);
           if(!a){
-            dbo.collection("account").insertOne({username:q.username,password:q.password},function (err, result) {
+            dbo.collection("account").insertOne({username:q.username,password:q.password,timerecord:"0"},function (err, result) {
               if (err) throw err;
               res.send("ok");
               console.log(a.username+" "+a.password);
