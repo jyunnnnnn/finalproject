@@ -1,0 +1,123 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>搶救學分大作戰</title>
+        <style type="text/css">
+            *{
+                font-family:微軟正黑體;  
+            }
+            body{
+                background-color: white;
+            }
+            #username, #password{
+                font-size: 18px;
+                width: 250px;
+                height: 40px;
+                margin: 15px;
+                color: #108e68;
+            }
+            h2{
+                text-align: center;
+                color: #a3a2a3;
+            }
+            h2:hover{
+                color: black;
+            }
+            h2:hover::before {
+                position: absolute;
+                top: 310px;
+                left: 40;
+                content: '初次使用請先註冊喔:D';
+            }
+            #container1{
+                margin: 50px;
+                padding: 10px;
+                width: 300px;
+                height: 350px;
+                background-color: white;
+                border-radius: 5px;
+                border-top: 10px solid #108e68;
+                border-bottom:10px solid #108e68;
+                box-shadow: 0 0px 70px rgba(0, 0, 0, 0.1);
+                position:relative;   
+                margin: auto;
+                top: 100px;
+                text-align:center;  
+            }
+            .big{
+                position:relative;   
+                margin: 10px;
+                font-weight:bold;
+                top: 100px;
+                font-size: 50px;
+                text-align:center; 
+            }
+            .a{
+                color: white;  
+                background: #108e68;
+                width: 120px;
+                height: 50px;
+                margin: 10px;
+                padding: 5px;
+                border-radius: 5px;
+                border: 0px;
+                font-size: 20px;
+                flex: auto;
+            }
+            .a:hover{
+                background-color: rgb(11, 107, 85);
+            }
+            input{
+                padding: 8px;
+                border: none; 
+                border:solid 1px #ccc;
+                border-radius: 5px;
+            }
+        </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+        <script>
+            $(document).ready(function(){
+                $("#signin").click(function () {
+                    if ($("#username").val() == "" || $("#password").val() == "") alert("請確認輸入");
+                    else {
+                        $.post("/signIn",{username: $("#username").val(),password: $("#password").val(),},function (res) {
+                                if (res != "fail") {
+                                    alert("登入成功 請按下確認進入網頁");
+                                    location.href=("main.html?"+res);
+                                }
+                                else alert("登入失敗");
+    
+                        });
+                    }
+                });
+                $("#signup").click(function () {
+                    if ($("#username").val() == "" || $("#password").val() == "") alert("請確認輸入");
+                    else {
+                        $.post("/signUp",{username: $("#username").val(),password: $("#password").val(),},function (res) {
+                                if (res == "ok") {
+                                    alert("註冊成功，請再次登入");
+                                }
+                                else alert("註冊失敗，帳號名稱被使用");
+                        });
+                    }
+                });
+            });
+        </script>
+    </head>
+  <body>
+    <div class="big">
+        搶救學分大作戰
+    </div>
+    <div class="login_page">
+      <div id="container1">
+        <div class="login">  
+          <h2>請輸入帳號及密碼</h2>
+            <input type="text" id="username" name="username" placeholder="帳號" >
+            <input type="text" id="password" name="password" placeholder="密碼"  >
+            <input class="a" type="button" value="登入" id="signin">
+            <input class="a" type="button" value="註冊" id="signup">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
