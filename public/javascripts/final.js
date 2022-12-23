@@ -7,6 +7,18 @@ $(document).ready(function(){
     var count=null;//開始暫停
     $("#stoptime").prop('disabled',true);
     play(randomarr[Math.floor(Math.random()*3)]);//homepage
+    /*功能介紹*/
+    $("#introduce").click(function (){
+        dis=`<div class="intro1">Introduce Our Website Function`;
+        dis+=`<hr width="75%"  style="margin-top: 20px;"></div>`;
+        dis+=`<div id="flex-container"></div>`;
+        content=`<div><img src="images/home.png" alt="home" class="intro_pic"><br><span class="pic_txt">網站首頁</span></div>`
+        content+=`<div><img src="images/pencil.png" alt="pencil" class="intro_pic"><br><span class="pic_txt">選擇科目</span></div>`
+        content+=`<div><img src="images/clock.png" alt="clock" class="intro_pic"><br><span class="pic_txt">時間紀錄</span></div>`
+        content+=`<div><img src="images/bingo.png" alt="bingo" class="intro_pic"><br><span class="pic_txt">抽獎遊戲</span></div>`
+        $("#display").html(dis);
+        $("#flex-container").html(content);
+    });   
     /*計時*/
     $("#starttime").click(function(){
         $.get("/time",{username:account},function(res){
@@ -184,16 +196,6 @@ $(document).ready(function(){
     us="";
     $("#display").html(us);
 }
-/*功能介紹*/function introduce(){
-    dis=`<div class="intro1">Introduce Our Website Function`;
-    dis+=`<hr width="75%"  style="margin-top: 20px;"></div>`;
-    dis+=`<div id="flex-container"></div>`;
-    content=`<div><img src="images/home.png" alt="home" class="intro_pic"><br><span class="pic_txt">網站首頁</span></div>`
-    content+=`<div><img src="images/pencil.png" alt="pencil" class="intro_pic"><br><span class="pic_txt">選擇科目</span></div>`
-    content+=`<div><img src="images/clock.png" alt="clock" class="intro_pic"><br><span class="pic_txt">時間紀錄</span></div>`
-    content+=`<div><img src="images/bingo.png" alt="bingo" class="intro_pic"><br><span class="pic_txt">抽獎遊戲</span></div>`
-    $("#display").html(dis);
-    $("#flex-container").html(content);
-}   
+
 
 
