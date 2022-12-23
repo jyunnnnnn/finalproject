@@ -5,6 +5,7 @@ $(document).ready(function(){
     var which;//影片代碼儲存變數
     let seconds;//秒數
     var count=null;//開始暫停
+    $("#stoptime").prop('disabled',true);
     play(randomarr[Math.floor(Math.random()*3)]);//homepage
     /*計時*/
     $("#starttime").click(function(){
@@ -12,6 +13,8 @@ $(document).ready(function(){
             seconds=res.toString();
         });
         count=setInterval(update,1000);
+        $("#starttime").prop('disabled',true);
+        $("#stoptime").prop('disabled',false);
     });
     function update(){
         seconds=Number(seconds);
@@ -32,6 +35,8 @@ $(document).ready(function(){
     $("#stoptime").click(function (){
         clearInterval(count);
         count=null;
+        $("#starttime").prop('disabled',false);
+        $("#stoptime").prop('disabled',true);
     });
     $("#logout").click(function(){
         alert("登出成功 請按下確認回到登入頁面")
