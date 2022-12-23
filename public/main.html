@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搶救學分大作戰</title>
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="javascripts/final.js"></script>
+    
+</head>
+<body style="overflow-x: hidden ;overflow-y: hidden ;">
+    
+    <div id="container1" class="col-12">
+        <div class="col-5" style="margin: 2px;" id="title_help">搶救學分大作戰</div>
+        <div style="margin: 2px;" id="login">註冊登入</div>
+        <input type="button" id="logout" value="登出">
+
+
+    </div>
+    <div  id="container2" class="col-12" style="position:relative" >
+        <div class="col-1">
+            <div id="gotoback" type="button" style="margin-bottom: 10px;">
+                <div style="color:rgb(187, 192, 56); display: inline-block;font-size: 125%;font-weight: bold;" onclick="showhomepage()">網站首頁</div>
+            </div>
+            <div id="listtt" style="margin-bottom: 10px;">
+                <div style="color:rgb(78, 178, 123); font-size: 125%;font-weight: bold;">選擇科目</div>
+                    <ul id="toselect" name="toselect" class="pretty-select" style="margin: 5px; padding-left: 25px;">
+                        <li class="phover" tabindex="1" value="caculus" onclick="showcaculus()">微積分</li>
+                        <li class="phover" tabindex="1"  value="discrete" onclick="showdiscrete()">離散數學</li>
+                        <li class="phover" tabindex="1" value="itc"onclick="showditc()">計算機概論</li>
+                        <li class="phover" tabindex="1" value="linear"onclick="showlinear()">線性代數</li>
+                        <li class="phover" tabindex="1" value="probability"onclick="showprobability()">機率論</li>
+                        <li class="phover" tabindex="1"  value="probability"onclick="showca()">計算機組織</li>
+                        <li class="phover" tabindex="1" value="probability"onclick="showds()">資料結構</li>
+                    </select>   
+                
+                </div>
+            
+            <div onclick="introduce()" id="introduce" style="color:rgb(78, 178, 123); font-size: 125%;font-weight: bold;margin-bottom: 10px;" >功能介紹</div>
+                
+            <div id="aboutus" onclick="aboutus()" style="margin-bottom: 10px;">
+                <div style="color:rgb(78, 178, 123); font-size: 125%;font-weight: bold;">關於我們</div>
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <a style="font-size: 125%;font-weight: bold;color:rgb(78, 178, 123);text-decoration:none" href="game.html" target="_blank" >抽獎遊戲</a>
+            </div>
+        </div>
+        
+        <div class="col-10" id="content">
+            <div id="display" ></div>
+        </div>
+        <div  class="col-1">
+            <div style="text-align: center;color:brown ;margin-bottom: 7px;width: 100%;">時間紀錄
+                <input id="starttime" type="button" value="開始" onclick="timerun()" style="width: 50%;">
+                <input id="stoptime" type="button" value="停止" onclick="stoptimerun()" style="width: 50%;float:right;">
+            </div>
+            <img  id="level" src="images/level.jpg" alt="error" style=" width: 100%; float:right;">
+            <p style="color:rgba(0, 0, 0, 0.582);text-decoration:none;text-align: center;"; id="levelmsg"></p>
+    </div>
+</div>
+    
+    <footer class="col-12" id="container3"> 
+        <div id="123" style="color: pink;"></div>
+        <a href="https://www.youtube.com/" target="_blank"  style="color:red;text-decoration:none";>Youtube</a>
+        <a href="https://www.youtube.com/c/NYCUOCW" target="_blank"  style="color:orange;text-decoration:none";>NYCU OCW</a>
+        <a href="https://www.youtube.com/@NTUCASE" target="_blank"  style="color:rgb(232, 224, 3);text-decoration:none";>
+            臺大科學教育發展中心CASE</a>
+        <a href="https://www.youtube.com/@htyauiem" target="_blank"  style="color:green;text-decoration:none";>姚賀騰博士先生</a>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搶救學分大作戰</title>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#signin").click(function () {
+                if ($("#username").val() == "" || $("#password").val() == "") alert("Please check your input");
+                else {
+                    $.post("/signIn",{username: $("#username").val(),password: $("#password").val(),},function (res) {
+                            if (res != "fail") {
+                                alert("登入成功 請按下確認進入網頁");
+                                location.href=("main.html?"+res);
+                            }
+                            else alert("登入失敗");
+
+                    });
+                }
+            });
+            $("#signup").click(function () {
+                if ($("#username").val() == "" || $("#password").val() == "") alert("Please check your input");
+                else {
+                    $.post("/signUp",{username: $("#username").val(),password: $("#password").val(),},function (res) {
+                            if (res == "ok") {
+                                alert("註冊成功，請再次登入");
+                            }
+                            else alert("註冊失敗，帳號名稱被使用");
+                    });
+                }
+            });
+        });
+        
+    </script>
+</head>
+<body>
+    <label>帳號: <input type=" text" id="username" size="10"></input></label>
+    <br>
+    <label>密碼: <input type="text" id="password" size="10"></label>
+    <br>
+    </input><input type="button" id="signin" value="登入">
+    <input type="button" id="signup" value="註冊">
+</body>
+</html>
