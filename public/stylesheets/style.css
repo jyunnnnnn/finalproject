@@ -113,18 +113,16 @@ li{
     padding: 1px;
     margin-bottom: 2px;
 }
+
 /*暫時*/
-#logout{
-    position: absolute;
-    right: 10px;
-    top:45px;
-    width: 80px;
-}
 #login{
     position: absolute;
     right: 10px;
-    top:0px;
+    top:20px;
     font-size: 30px;
+}
+#login:hover{
+    color: black;
 }
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
