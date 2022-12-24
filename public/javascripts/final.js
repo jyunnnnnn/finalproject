@@ -1,6 +1,6 @@
 /*初始設定*/
 const account=decodeURIComponent((location.search).substring(1));
-const randomarr=["b0cybhfNXl4","u0rgcWyuQbY","3IlQNqvzc2M"];
+const randomarr=["b0cybhfNXl4","BkgD0vTvT08","3IlQNqvzc2M"];
 $(document).ready(function(){
     var which;//影片代碼儲存變數
     let seconds;//秒數
