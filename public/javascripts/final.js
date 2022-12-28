@@ -18,6 +18,14 @@ $(document).ready(function(){
         $("#display").html(dis);
         $("#flex-container").html(content);
     });
+    $("#aboutus").click(function (){
+        dis=`<div id="flex-container"></div>`;
+        dis+=`<img id="intro_content" src="images/jyun.png" alt="intro_content">`;
+        content=`<div onclick="intro_jyun()"  class="tt">林竑均</div>`;
+        content+=`<div onclick="intro_hu()"  class="tt">胡化熏</div>`;
+        $("#display").html(dis);
+        $("#flex-container").html(content);
+    });
     /*計時*/
     $("#starttime").click(function(){
         $.get("/time",{username:account},function(res){
@@ -202,4 +210,10 @@ function intro_time(){
 }
 function intro_game(){
     $("#intro_content").attr("src","images/intro_game.gif");
+}
+function intro_hu(){
+    $("#intro_content").attr("src","images/hu.png");
+}
+function intro_jyun(){
+    $("#intro_content").attr("src","images/jyun.png");
 }
