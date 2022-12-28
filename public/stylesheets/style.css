@@ -39,6 +39,17 @@
     width: 33%;
     transition:0.5s;
 }
+.tt{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    width: 50%;
+}
+.tt:hover{
+    color: rgb(162, 163, 170);
+    font-size: 45px;
+    transition:0.5s;    
+
+}
 #flex-container {
     display: flex;
     width: 75%;
